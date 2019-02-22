@@ -56,9 +56,7 @@ module.exports = app => {
 
     //listando todos users
     const get = (req, res) => {
-        app.db('users')
-            .select('id', 'name', 'email', 'admin')
-            .whereNull('deletedAt')
+        app.db.select('id', 'name', 'email', 'admin').from('users')
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }
